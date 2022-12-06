@@ -1,0 +1,22 @@
+table,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 75%;
+}
+
+tr {
+    height: 35px;
+}
+
+p,
+table,
+td,
+tr,
+li,
+ul {
+    font-family: "Times New Roman", Times, serif;
+}

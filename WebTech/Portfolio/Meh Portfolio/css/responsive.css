@@ -1,0 +1,71 @@
+@media only screen and (max-width:340px) {
+    .header_area.main-menu.navbar,
+    .header_area.main-menu.navbar.navbar-brand,
+    .site-main.services,
+    .site-main.awards,
+    .site-main.hobbies {
+        padding: 2%;
+        margin: 0%;
+    }
+    .site-main.site-banner.site-tile h1 {
+        font-size: 34px;
+    }
+    .site-main>.awards.services,
+    .site-main>.hobbies.services {
+        width: 13rem;
+    }
+    .site-banner,
+    .awards,
+    .hobbies,
+    .edu-area {
+        width: 33.3%;
+        height: 215px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+        font-weight: 700;
+    }
+    img {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+    h1 {
+        font-size: auto;
+    }
+    .site-main.edu-area p {
+        padding: 0%;
+    }
+    img {
+        width: auto;
+        height: auto;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .site-banner,
+    .awards,
+    .hobbies,
+    .edu-area {
+        width: 66%;
+        height: 320px;
+    }
+    img {
+        width: auto;
+        height: auto;
+    }
+}
+
+
+/* @media only screen and (min-width: 769px) {
+    .site-banner,
+    .awards,
+    .hobbies,
+    .edu-area {
+        width: 33.3%;
+        height: 350px;
+    }
+} */

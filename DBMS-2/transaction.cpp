@@ -1,12 +1,16 @@
 #include<stdio.h>
-#include<bits/stdc++.h>
+// #include<bits/stdc++.h>
+#include<vector>
+#include<set>
+#include<map>
 #include <iostream>
 #include <fstream>
 #include<string>
-#define NODE 5
+#define NODE 100
 using namespace std;
 
-int graph[NODE][NODE] ;
+int graph[NODE][NODE] ={0};
+int adj_mtx[NODE][NODE] = {0};
 
   bool dfs(int curr, set<int>&wSet, set<int>&gSet, set<int>&bSet) {
    //moving curr to white set to grey set.
@@ -100,10 +104,10 @@ while (getline (r, text)) {
     }
   }
 
-   bool res;
-   res = hasCycle();
-   if(res)
-      cout << "The graph has cycle." << endl;
-   else
-      cout << "The graph has no cycle." << endl;
+  //  bool res;
+  //  res = hasCycle();
+  //  if(res)
+  //     cout << "The graph has cycle." << endl;
+  //  else
+  //     cout << "The graph has no cycle." << endl;
 }

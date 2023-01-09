@@ -55,24 +55,9 @@ a:hover {
 }
 
 
-/* .box {
-    width: 320px;
-    padding: 10px;
-    border: 5px solid gray;
-    margin: 0;
-    border-style: double;
-} */
-
-
 /* banner */
 
-.site-main,
-.site-banner,
-.site-title,
-h3 {
-    /* background: url(/img/rsz_11logo.png) no-repeat;
-    background-position: 0% 50%; */
-    /* padding-top: 35%; */
+.site-main.site-banner.site-title h3 {
     font: normal 30px/62px var(--roboto);
     font-weight: 500;
     padding-bottom: 0px;

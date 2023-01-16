@@ -18,22 +18,10 @@ public class Main {
         Meeting meeting3 = new Meeting(date3,  attendees);
 
         MeetingScheduler scheduler = MeetingScheduler.getInstance();
-        if(scheduler.scheduleMeeting(meeting1)){
-            System.out.println("Meeting scheduled successfully");
-        }else {
-            System.out.println("Meeting could not be scheduled, another meeting is already scheduled on the same time");
-        }
-        if(scheduler.scheduleMeeting(meeting2)){
-            System.out.println("Meeting scheduled successfully");
-        }else {
-            System.out.println("Meeting could not be scheduled, another meeting is already scheduled on the same time");
-        }
-
-        if(scheduler.scheduleMeeting(meeting3)){
-            System.out.println("Meeting scheduled successfully");
-        }else {
-            System.out.println("Meeting could not be scheduled, another meeting is already scheduled on the same time");
-        }
+        
+        scheduler.scheduleMeeting(meeting1);
+        scheduler.scheduleMeeting(meeting2);
+        scheduler.scheduleMeeting(meeting3);
 
     }
 }

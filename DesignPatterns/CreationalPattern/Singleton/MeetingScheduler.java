@@ -19,13 +19,15 @@ public class MeetingScheduler {
         return instance;
     }
 
-    public boolean scheduleMeeting(Meeting meeting) {
+    public void scheduleMeeting(Meeting meeting) {
         if (meetings.containsKey(meeting.getDate())) {
             // There is already a meeting scheduled on that date
-            return false;
+            System.out.println("Meeting could not be scheduled, another meeting is already scheduled on the same time");
+            // return false;
         } else {
             meetings.put(meeting.getDate(), meeting);
-            return true;
+            System.out.println("Meeting scheduled successfully");
+            // return true;
         }
     }
 

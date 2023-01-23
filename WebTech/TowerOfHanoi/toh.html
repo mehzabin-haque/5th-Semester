@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi</title>
+    <link rel="stylesheet" href="toh.css">
+</head>
+
+<body>
+    <div class="container1">
+        <h2 class="title">
+            <span class="title-word title-word-1">Tower</span>
+            <span class="title-word title-word-2">Of</span>
+            <span class="title-word title-word-3">Hanoi</span>
+
+        </h2>
+    </div>
+    </div>
+    <div class="row r1">
+        <div class="column c1 flex-container" id="div1">
+            <button class="button" id="bt1">1</button><br>
+            <button class="button" id="bt2">2</button><br>
+            <button class="button" id="bt3">3</button><br>
+            <button class="button" id="bt4">4</button><br>
+
+        </div>
+        <div class="column c2 flex-container" id="div2"></div>
+        <div class="column c3 flex-container" id="div3"></div>
+    </div>
+    <div class="row r11">
+        <div class="column c11">
+            <!-- <h2>Hello</h2> -->
+            <p id="p1"><b>1</b></p>
+        </div>
+        <div class="column c12">
+            <!-- <h2>Hello</h2> -->
+            <p id="p2"><b>2</b></p>
+        </div>
+
+        <div class="column c13">
+            <!-- <h2>Hello</h2> -->
+            <p id="p3"><b>3</b></p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="column cl1">
+            <br>
+            <button class="button-30" id="1to2" onclick="oneTwo()"> 1 to 2 </button>
+            <button class="button-30" id="2to3" onclick="twoThree()"> 2 to 3 </button>
+            <button class="button-30" id="3to1" onclick="threeOne()"> 3 to 1 </button><br>
+            <button class="button-30" id="3to2" onclick="threeTwo()"> 3 to 2 </button>
+            <button class="button-30" id="2to1" onclick="twoOne()"> 2 to 1 </button>
+            <button class="button-30" id="1to3" onclick="oneThree()"> 1 to 3 </button>
+        </div>
+    </div>
+    <br><br>
+    <div class="last">
+        <button class="button-78" id="reset1" type="button" onclick="shuffle()"> New Game </button>
+        <button class="button-78" id="chk" type="button" onclick="chk()"> Check </button>
+    </div>
+
+    <div class="footer text-center">
+        <p>&copy;
+            <a href="https://www.facebook.com/tanaaa.Mehzabin.20/">Mehzabin Haque</a></p>
+    </div>
+
+    <script>
+        let div1 = document.getElementById("div1");
+        let div2 = document.getElementById("div2");
+        let div3 = document.getElementById("div3");
+
+        function oneTwo() {
+            let from = document.getElementById("div1");
+            let to = document.getElementById("div2");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function twoThree() {
+            let from = document.getElementById("div2");
+            let to = document.getElementById("div3");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function threeOne() {
+            let from = document.getElementById("div3");
+            let to = document.getElementById("div1");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function threeTwo() {
+            let from = document.getElementById("div3");
+            let to = document.getElementById("div1");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function twoOne() {
+            let from = document.getElementById("div2");
+            let to = document.getElementById("div1");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function oneThree() {
+            let from = document.getElementById("div1");
+            let to = document.getElementById("div3");
+
+            to.insertBefore(from.firstElementChild, to.firstElementChild);
+        }
+
+        function shuffle() {
+
+            let div2_elements = div2.children;
+            let div3_elements = div3.children;
+            while (div2_elements.length > 0) {
+                div1.appendChild(div2_elements[0]);
+            }
+
+            while (div3_elements.length > 0) {
+                div1.appendChild(div3_elements[0]);
+            }
+
+            let array = [];
+            while (array.length < 4) {
+                let random = Math.floor(4 * Math.random()) + 1;
+                if (!array.includes(random)) {
+                    array.push(random);
+                }
+            }
+
+            let btns = document.querySelectorAll(".button");
+            if (btns.length > 0) {
+                for (let i = 0; i < 4; i++) {
+                    btns[i].innerHTML = array[i];
+
+                }
+            }
+        }
+    </script>
+    <script src="toh.js"></script>
+
+</body>
+
+</html>

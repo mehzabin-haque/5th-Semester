@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.FactoryMethod;
+package CreationalPattern.FactoryMethod;
 
 public interface Vehicle {
     void requestInProcess();

@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.FactoryMethod;
+package CreationalPattern.FactoryMethod;
 
 public abstract class VehicleFactory {
     

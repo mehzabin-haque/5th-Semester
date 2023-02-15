@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Subject {
+public abstract class Subject {
     private List<Observer> observers = new ArrayList<>();
 
     public void registerObserver(Observer observer) {
@@ -26,4 +26,6 @@ public class Subject {
 
         System.out.println("******************************");
     }
+    
+    
 }

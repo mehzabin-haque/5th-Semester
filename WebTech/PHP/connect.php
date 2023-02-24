@@ -1,14 +1,10 @@
 <?php
-	$firstName = $_POST['firstname'];
-	$lastName = $_POST['lastname'];
-	$email = $_POST['email'];
-	$add = $_POST['add'];
 
     echo "Name";
     echo "    ";
-    echo $firstName;
+    echo $firstname;
     echo " ";
-    echo $lastName;
+    echo $lastname;
     echo "<br>";
     echo "<br>";
     echo "Email";
@@ -18,7 +14,11 @@
     echo "<br>";
     echo "Address";
     echo "    ";
-    echo $add;
+    echo $addr;
+
+   
+
+
    
 	
 	// $conn = new mysqli('localhost','root','','test');

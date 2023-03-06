@@ -1,7 +1,5 @@
 package CreationalPattern.ObeserverDesignPattern;
 
-import java.io.File;
-
 public abstract class Observer {
     protected String name;
 
@@ -9,7 +7,7 @@ public abstract class Observer {
         this.name = name;
     }
 
-    public abstract void update(File file);
+    public abstract void update(String message);
     
     
 }

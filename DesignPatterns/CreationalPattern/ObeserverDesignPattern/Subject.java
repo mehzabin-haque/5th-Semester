@@ -13,15 +13,12 @@ public class Subject {
 
     public void unregisterObserver(Observer observer) {
         observers.remove(observer);
+        System.out.println("Observer has been unregistered and won't receive notifications.");
     }
 
-    public void notifyObservers(File file) {
+    public void notifyObservers(String message) {
         for (Observer observer : observers) {
-            if (observers.contains(observer)) {
-                observer.update(file);
-            } else {
-                System.out.println("Observer has been unregistered and won't receive notifications.");
-            }
+                observer.update(message);
         }
 
         System.out.println("******************************");

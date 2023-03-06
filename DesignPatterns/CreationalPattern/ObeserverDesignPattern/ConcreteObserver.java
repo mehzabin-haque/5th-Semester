@@ -8,9 +8,9 @@ public class ConcreteObserver extends Observer {
         super(name);
     }
 
-    public void update(File file) {
+    public void update(String message) {
         System.out.println( name + " received notification:");
-        System.out.println("File name: " + file.getName());
+        System.out.println(message);
         System.out.println("Time of change: " + System.currentTimeMillis());
         System.out.println("------------------------------");
     }

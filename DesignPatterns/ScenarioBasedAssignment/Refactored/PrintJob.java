@@ -1,4 +1,4 @@
-package DesignPatterns.ScenarioBasedAssignment.Refactored;
+package ScenarioBasedAssignment.Refactored;
 
 import java.util.Queue;
 

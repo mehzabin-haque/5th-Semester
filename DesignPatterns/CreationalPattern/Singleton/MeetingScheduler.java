@@ -1,4 +1,4 @@
-package CreationalDesignPattern.Singleton;
+package CreationalPattern.Singleton;
 
 // import java.sql.*;
 import java.sql.Date;

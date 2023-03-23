@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.Singleton;
+package CreationalPattern.Singleton;
 public class ScheduleSingleton {
     // volatile makes the changes or the threads which are accessing
     // instance variable visible

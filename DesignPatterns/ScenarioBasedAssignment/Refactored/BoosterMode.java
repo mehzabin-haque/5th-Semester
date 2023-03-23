@@ -1,5 +1,5 @@
 
-package DesignPatterns.ScenarioBasedAssignment.Refactored;
+package ScenarioBasedAssignment.Refactored;
 public class BoosterMode {
     int threshold;
     int max_acceptable_level;

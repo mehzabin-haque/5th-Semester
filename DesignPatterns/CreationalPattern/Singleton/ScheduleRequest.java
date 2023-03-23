@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.Singleton;
+package CreationalPattern.Singleton;
 
 public class ScheduleRequest {
     private final String name;

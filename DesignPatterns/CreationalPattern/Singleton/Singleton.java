@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.Singleton;
+package CreationalPattern.Singleton;
 public class Singleton {
 
    public static void main(String[] args) throws InterruptedException {

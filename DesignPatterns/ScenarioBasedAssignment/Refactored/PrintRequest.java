@@ -1,4 +1,4 @@
-package DesignPatterns.ScenarioBasedAssignment.Refactored;
+package ScenarioBasedAssignment.Refactored;
 
 public class PrintRequest {
     Document dc = new Document();

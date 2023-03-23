@@ -1,4 +1,4 @@
-package DesignPatterns.CreationalPattern.Singleton;
+package CreationalPattern.Singleton;
 
 // import java.util.Arrays;
 // import java.util.LinkedList;

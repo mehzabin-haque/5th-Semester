@@ -1,4 +1,4 @@
-package DesignPatterns.ScenarioBasedAssignment.Refactored;
+package ScenarioBasedAssignment.Refactored;
 
 public abstract class PrintMode {
     protected String orientation;

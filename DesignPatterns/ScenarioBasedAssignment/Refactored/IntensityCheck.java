@@ -1,4 +1,4 @@
-package DesignPatterns.ScenarioBasedAssignment.Refactored;
+package ScenarioBasedAssignment.Refactored;
 
 public enum IntensityCheck {
     HIGH("high"),MEDIUM("medium"),LOW("low");

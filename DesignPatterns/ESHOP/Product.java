@@ -15,6 +15,7 @@ public class Product {
         this.inventory = inventory;
     }
 
+    // getters and setters
     public String getName() {
         return name;
     }
@@ -37,6 +38,10 @@ public class Product {
 
     public void setInventory(int inventory) {
         this.inventory = inventory;
+    }
+
+    public boolean isAvailable() {
+        return inventory > 0;
     }
 }
 

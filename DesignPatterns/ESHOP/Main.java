@@ -1,39 +1,80 @@
 package ESHOP;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // create a user
-        User user = new User("Mehzabin Haque", "john.smith@example.com", "password", "123 Main St");
 
-        // create a product
+        EcommerceMediator mediator = new EcommercePlatform();
+
+        User user1 = new User("Mehzabin Haque", "john.smith@example.com", "password", "123 Main St");
+        User user2 = new User("Alice", "alice@example.com", "password", "456 Elm St");
+        mediator.addUser(user1);
+        mediator.addUser(user2);
+
         Product product = new Product("iPhone 12", "Apple iPhone 12 (64GB)", 799.00, "https://example.com/iphone12.jpg", 10);
+        mediator.addProduct(product);
 
-        // create payment strategies
         PaymentStrategy creditCardPaymentStrategy = new CreditCardPaymentStrategy("1234 5678 9012 3456", "12/24", "123");
         PaymentStrategy payPalPaymentStrategy = new PayPalPaymentStrategy("john.smith@example.com", "password");
         PaymentStrategy cryptocurrencyPaymentStrategy = new CryptocurrencyPaymentStrategy("0x1234567890abcdef");
 
-        // create a product purchase template
-        ProductPurchaseTemplate productPurchaseTemplate = new ProductPurchaseTemplate() {};
+        OnlinePurchase onlinePurchase = new OnlinePurchase();
 
-        // purchase the product using a credit card
-        System.out.println("Purchasing the product using a credit card:");
-        productPurchaseTemplate.purchaseProduct(user, product, creditCardPaymentStrategy);
+        Scanner scanner = new Scanner(System.in);
 
-        // purchase the product using PayPal
-        // System.out.println("\nPurchasing the product using PayPal:");
-        // productPurchaseTemplate.purchaseProduct(user, product, payPalPaymentStrategy);
+        List<User> loggedInUsers = new ArrayList<>();
 
-        // purchase the product using cryptocurrency
-        // System.out.println("\nPurchasing the product using cryptocurrency:");
-        // productPurchaseTemplate.purchaseProduct(user, product, cryptocurrencyPaymentStrategy);
-
-        // ProductPurchaseTemplate productPurchase = new ProductPurchaseWithPromotion();
-
-        // PaymentStrategy paymentStrategy = new CreditCardPaymentStrategy("Mehzabin Haque", "1234567890123456", "123");
-
-        // // purchase the product with promotion
-        // productPurchase.purchaseProduct(user, product, paymentStrategy);
-    
+        while (true) {
+            if (loggedInUsers.isEmpty()) {
+                System.out.println("No user is currently logged in. Please enter your email and password to log in:");
+                String email = scanner.nextLine();
+                String password = scanner.nextLine();
+                for (User user : mediator.getUsers()) {
+                    if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                        loggedInUsers.add(user);
+                        break;
+                    }
+                }
+                if (loggedInUsers.isEmpty()) {
+                    System.out.println("Invalid email or password. Please try again.");
+                }
+            } else {
+                System.out.println("Total " + loggedInUsers.size() + " number of users are currently logged in.");
+                System.out.println("1. Purchase a product");
+                System.out.println("2. Log out");
+                String choice = scanner.nextLine();
+                if (choice.equals("1")) {
+                    System.out.println("Purchasing the product:");
+                    PaymentStrategy paymentStrategy = null;
+                    while (paymentStrategy == null) {
+                        System.out.println("Please select a payment method:");
+                        System.out.println("1. Credit card");
+                        System.out.println("2. PayPal");
+                        System.out.println("3. Cryptocurrency");
+                        String paymentChoice = scanner.nextLine();
+                        if (paymentChoice.equals("1")) {
+                            paymentStrategy = creditCardPaymentStrategy;
+                        } else if (paymentChoice.equals("2")) {
+                            paymentStrategy = payPalPaymentStrategy;
+                        } else if (paymentChoice.equals("3")) {
+                            paymentStrategy = cryptocurrencyPaymentStrategy;
+                        } else {
+                            System.out.println("Invalid choice. Please try again.");
+                        }
+                    }
+                    DiscountStrategy discountStrategy = paymentStrategy instanceof CreditCardPaymentStrategy ? new TenPercentDiscountStrategy() : new NoDiscountStrategy();
+                    double discountedPrice = discountStrategy.applyDiscount(product.getPrice());
+                    System.out.println("The discounted price is: $" + discountedPrice);
+                    onlinePurchase.processOrder(loggedInUsers.get(0), product, paymentStrategy,discountedPrice);
+                } else if (choice.equals("2")) {
+                    loggedInUsers.clear();
+                } else {
+                    System.out.println("Invalid choice. Please try again.");
+                }
+            }
+        }
     }
 }

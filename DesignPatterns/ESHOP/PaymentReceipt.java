@@ -18,11 +18,15 @@ public class PaymentReceipt {
         String paymentMethod = paymentStrategy instanceof CreditCardPaymentStrategy ? "Credit Card" :
             paymentStrategy instanceof PayPalPaymentStrategy ? "PayPal" :
             paymentStrategy instanceof CryptocurrencyPaymentStrategy ? "Cryptocurrency" : "Unknown";
-        System.out.println("Dear " + user.getName() + ",\n\n"
-            + "Thank you for your payment of $" + amount
+            
+            System.out.println("--------------------------------------------");
+            System.out.println("************Payment Confirmation************");
+            
+            System.out.println("Dear " + user.getName() + ",\n\n"
+            + "Thanks for your payment of $" + amount
             + " for the product: " + product.getName() + ".\n\n"
-            + "Payment method: " + paymentMethod + "\n\n"
-            + "Best regards,\nE-commerce Platform");
+            + "Payment method : " + paymentMethod + "\n\n"
+            + "Regards,\nMehzabin's Shop");
     }
 }
 

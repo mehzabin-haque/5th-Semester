@@ -12,11 +12,12 @@ public class OrderConfirmation {
     }
 
     public void send() {
-        // Send order confirmation email to user
+        System.out.println("------------------------------------------");
+        System.out.println("************Order Confirmation************");
         System.out.println("Dear " + user.getName() + ",\n\n"
             + "Thank you for your order! We have received your payment of $" + amount
             + " for the product: " + product.getName() + ".\n\n"
-            + "Best regards,\nE-commerce Platform");
+            + "Regards,\nMehzabin's Shop");
     }
 }
 

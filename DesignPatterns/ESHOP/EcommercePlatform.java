@@ -23,17 +23,16 @@ public class EcommercePlatform implements EcommerceMediator {
     }
 
     @Override
-    public void processOrder(User user, Product product, PaymentStrategy paymentStrategy) {
+    public void processOrder(User user, Product product, PaymentStrategy paymentStrategy,double discountedPrice) {
         if (products.contains(product) && users.contains(user)) {
             if (product.getInventory() > 0) {
                 product.setInventory(product.getInventory() - 1);
-                double amount = product.getPrice();
-                paymentStrategy.pay(amount);
 
                 // send order confirmation and payment receipt to the user
-                OrderConfirmation orderConfirmation = new OrderConfirmation(user, product, amount);
-                PaymentReceipt paymentReceipt = new PaymentReceipt(user, product, amount, paymentStrategy);
+                OrderConfirmation orderConfirmation = new OrderConfirmation(user, product, discountedPrice);
+                PaymentReceipt paymentReceipt = new PaymentReceipt(user, product, discountedPrice, paymentStrategy);
                 orderConfirmation.send();
+                // System.out.println("teststestse");
                 paymentReceipt.send();
             }
             else {
@@ -46,4 +45,10 @@ public class EcommercePlatform implements EcommerceMediator {
             System.out.println("Sorry, we could not process your order. Please try again later.");
         }
     }
+
+    @Override
+    public User[] getUsers() {
+        return users.toArray(new User[users.size()]);
+    }
+
 }

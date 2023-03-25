@@ -43,5 +43,14 @@ public class Product {
     public boolean isAvailable() {
         return inventory > 0;
     }
+
+    public void setPrice(double discountedPrice) {
+        this.price = discountedPrice;
+    }
+
+    public double getDiscountedPrice() {
+        return 0;
+    }
+    
 }
 

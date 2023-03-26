@@ -4,14 +4,12 @@ public class Product {
     private String name;
     private String description;
     private double price;
-    private String image;
     private int inventory;
 
-    public Product(String name, String description, double price, String image, int inventory) {
+    public Product(String name, String description, double price, int inventory) {
         this.name = name;
         this.description = description;
         this.price = price;
-        this.image = image;
         this.inventory = inventory;
     }
 
@@ -26,10 +24,6 @@ public class Product {
 
     public double getPrice() {
         return price;
-    }
-
-    public String getImage() {
-        return image;
     }
 
     public int getInventory() {

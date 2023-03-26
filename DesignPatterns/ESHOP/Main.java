@@ -8,20 +8,29 @@ public class Main {
     public static void main(String[] args) {
 
         EcommerceMediator mediator = new EcommercePlatform();
+        Product product1 = new Product("Watermelon", "It's a summer fruit", 9.00, 10);
+        Product product2 = new Product("Mango", "It's Yummy!!!", 20.00, 5);
+        Product product3 = new Product("Ice cream", "Thanda Thanda Cool Cool", 15.00, 20);
+        mediator.addProduct(product1);
+        mediator.addProduct(product2);
+        mediator.addProduct(product3);
 
-        User user1 = new User("Mehzabin Haque", "john.smith@example.com", "password", "123 Main St");
-        User user2 = new User("Alice", "alice@example.com", "password", "456 Elm St");
+
+        User user1 = new User("Monica Geller", "mon@gmail.com", "123", "123 Beside Me");
+        User user2 = new User("Chandler Bing", "bing@gmail.com", "456", "456 Near Me");
+        User user3 = new User("Ross Geller", "ross@gmail.com", "789", "789 Around Me");
+        User user4 = new User("Rachel Green", "rachel@gmail.com", "012", "012 Near You");
         mediator.addUser(user1);
         mediator.addUser(user2);
+        mediator.addUser(user3);
+        mediator.addUser(user4);
 
-        Product product = new Product("iPhone 12", "Apple iPhone 12 (64GB)", 799.00, "https://example.com/iphone12.jpg", 10);
-        mediator.addProduct(product);
 
         PaymentStrategy creditCardPaymentStrategy = new CreditCardPaymentStrategy("1234 5678 9012 3456", "12/24", "123");
-        PaymentStrategy payPalPaymentStrategy = new PayPalPaymentStrategy("john.smith@example.com", "password");
+        PaymentStrategy payPalPaymentStrategy = new PayPalPaymentStrategy("mon@gmail.com", "123");
         PaymentStrategy cryptocurrencyPaymentStrategy = new CryptocurrencyPaymentStrategy("0x1234567890abcdef");
 
-        OnlinePurchase onlinePurchase = new OnlinePurchase();
+        ProductPurchaseTemplate onlinePurchase = new OnlinePurchase();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -47,6 +56,15 @@ public class Main {
                 System.out.println("2. Log out");
                 String choice = scanner.nextLine();
                 if (choice.equals("1")) {
+                    // prompt user to choose product
+                    System.out.println("Select a product to purchase:");
+                    List<Product> products = mediator.getProducts();
+                    for (int i = 0; i < products.size(); i++) {
+                        Product p = products.get(i);
+                        System.out.println((i + 1) + ". " + p.getName() + " ($" + p.getPrice() + ")");
+                    }
+                    int productIndex = Integer.parseInt(scanner.nextLine()) - 1;
+                    Product selectedProduct = products.get(productIndex);
                     System.out.println("Purchasing the product:");
                     PaymentStrategy paymentStrategy = null;
                     while (paymentStrategy == null) {
@@ -66,9 +84,9 @@ public class Main {
                         }
                     }
                     DiscountStrategy discountStrategy = paymentStrategy instanceof CreditCardPaymentStrategy ? new TenPercentDiscountStrategy() : new NoDiscountStrategy();
-                    double discountedPrice = discountStrategy.applyDiscount(product.getPrice());
+                    double discountedPrice = discountStrategy.applyDiscount(selectedProduct.getPrice());
                     System.out.println("The discounted price is: $" + discountedPrice);
-                    onlinePurchase.processOrder(loggedInUsers.get(0), product, paymentStrategy,discountedPrice);
+                    onlinePurchase.processOrder(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice);
                 } else if (choice.equals("2")) {
                     loggedInUsers.clear();
                 } else {

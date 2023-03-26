@@ -24,5 +24,6 @@ public class OnlinePurchase extends ProductPurchaseTemplate {
         mediator.processOrder(user, product, paymentStrategy,discountedPrice);
        
     }
+    
 
 }

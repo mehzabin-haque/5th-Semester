@@ -1,5 +1,7 @@
 package ESHOP;
 
+import java.util.List;
+
 public class PaymentReceipt {
     private User user;
     private Product product;
@@ -11,6 +13,10 @@ public class PaymentReceipt {
         this.product = product;
         this.amount = amount;
         this.paymentStrategy = paymentStrategy;
+    }
+
+    public PaymentReceipt(List<User> loggedInUsers, Product product2, double discountedPrice,
+            PaymentStrategy paymentStrategy2) {
     }
 
     public void send() {

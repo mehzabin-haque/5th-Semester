@@ -1,5 +1,7 @@
 package ESHOP;
 
+import java.util.List;
+
 public class OrderConfirmation {
     private User user;
     private Product product;
@@ -9,6 +11,9 @@ public class OrderConfirmation {
         this.user = user;
         this.product = product;
         this.amount = amount;
+    }
+
+    public OrderConfirmation(List<User> loggedInUsers, Product product2, double discountedPrice) {
     }
 
     public void send() {

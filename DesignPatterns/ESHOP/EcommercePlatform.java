@@ -5,7 +5,7 @@ import java.util.List;
 
 public class EcommercePlatform implements EcommerceMediator {
     private List<User> users;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public EcommercePlatform() {
         this.users = new ArrayList<>();
@@ -46,9 +46,16 @@ public class EcommercePlatform implements EcommerceMediator {
         }
     }
 
+    
+
     @Override
     public User[] getUsers() {
         return users.toArray(new User[users.size()]);
+    }
+
+    @Override
+    public List<Product> getProducts() {
+        return products;
     }
 
 }

@@ -86,7 +86,8 @@ public class Main {
                     DiscountStrategy discountStrategy = paymentStrategy instanceof CreditCardPaymentStrategy ? new TenPercentDiscountStrategy() : new NoDiscountStrategy();
                     double discountedPrice = discountStrategy.applyDiscount(selectedProduct.getPrice());
                     System.out.println("The discounted price is: $" + discountedPrice);
-                    onlinePurchase.processOrder(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice);
+                    onlinePurchase.purchaseProduct(loggedInUsers.get(0),selectedProduct, paymentStrategy, discountedPrice);
+                    // onlinePurchase.processOrder(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice);
                 } else if (choice.equals("2")) {
                     loggedInUsers.clear();
                 } else {

@@ -13,16 +13,13 @@ public class OrderConfirmation {
         this.amount = amount;
     }
 
-    public OrderConfirmation(List<User> loggedInUsers, Product product2, double discountedPrice) {
-    }
-
     public void send() {
         System.out.println("------------------------------------------");
         System.out.println("************Order Confirmation************");
         System.out.println("Dear " + user.getName() + ",\n\n"
             + "Thank you for your order! We have received your payment of $" + amount
             + " for the product: " + product.getName() + ".\n\n"
-            + "Regards,\nMehzabin's Shop");
+            + "Regards,\nMehzabin's Shop\n\n");
     }
 }
 

@@ -15,10 +15,6 @@ public class PaymentReceipt {
         this.paymentStrategy = paymentStrategy;
     }
 
-    public PaymentReceipt(List<User> loggedInUsers, Product product2, double discountedPrice,
-            PaymentStrategy paymentStrategy2) {
-    }
-
     public void send() {
         // Send payment receipt email to user
         String paymentMethod = paymentStrategy instanceof CreditCardPaymentStrategy ? "Credit Card" :
@@ -32,7 +28,7 @@ public class PaymentReceipt {
             + "Thanks for your payment of $" + amount
             + " for the product: " + product.getName() + ".\n\n"
             + "Payment method : " + paymentMethod + "\n\n"
-            + "Regards,\nMehzabin's Shop");
+            + "Regards,\nMehzabin's Shop\n\n");
     }
 }
 

@@ -14,7 +14,7 @@ public class OrderConfirmation {
     }
 
     public void send() {
-        System.out.println("------------------------------------------");
+        System.out.println("------------------------------------------\n");
         System.out.println("************Order Confirmation************");
         System.out.println("Dear " + user.getName() + ",\n\n"
             + "Thank you for your order! We have received your payment of $" + amount

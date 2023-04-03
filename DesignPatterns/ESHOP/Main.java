@@ -9,14 +9,14 @@ public class Main {
 
         EcommerceMediator mediator = new EcommercePlatform();
         Product product1 = new Product("Watermelon", "It's a summer fruit", 9.00, 10);
-        Product product2 = new Product("Mango", "It's Yummy!!!", 20.00, 5);
+        Product product2 = new Product("Mango", "It's Yummy!!!", 20.00, 6);
         Product product3 = new Product("Ice cream", "Thanda Thanda Cool Cool", 15.00, 20);
         mediator.addProduct(product1);
         mediator.addProduct(product2);
         mediator.addProduct(product3);
 
 
-        User user1 = new User("Monica Geller", "mon@gmail.com", "123", "123 Beside Me");
+        User user1 = new User("Monica Geller", "m", "123", "123 Beside Me");
         User user2 = new User("Chandler Bing", "bing@gmail.com", "456", "456 Near Me");
         User user3 = new User("Ross Geller", "ross@gmail.com", "789", "789 Around Me");
         User user4 = new User("Rachel Green", "rachel@gmail.com", "012", "012 Near You");
@@ -48,15 +48,19 @@ public class Main {
                     }
                 }
                 if (loggedInUsers.isEmpty()) {
+                    System.out.println("---------------------------------------");
                     System.out.println("Invalid email or password. Please try again.");
+                    System.out.println("---------------------------------------");
                 }
             } else {
+                System.out.println("---------------------------------------");
                 System.out.println("Total " + loggedInUsers.size() + " number of users are currently logged in.");
                 System.out.println("1. Purchase a product");
                 System.out.println("2. Log out");
                 String choice = scanner.nextLine();
                 if (choice.equals("1")) {
                     // prompt user to choose product
+                    System.out.println("---------------------------------------");
                     System.out.println("Select a product to purchase:");
                     List<Product> products = mediator.getProducts();
                     for (int i = 0; i < products.size(); i++) {
@@ -65,7 +69,7 @@ public class Main {
                     }
                     int productIndex = Integer.parseInt(scanner.nextLine()) - 1;
                     Product selectedProduct = products.get(productIndex);
-                    System.out.println("Purchasing the product:");
+                    System.out.println("---------------------------------------");
                     PaymentStrategy paymentStrategy = null;
                     while (paymentStrategy == null) {
                         System.out.println("Please select a payment method:");
@@ -80,14 +84,19 @@ public class Main {
                         } else if (paymentChoice.equals("3")) {
                             paymentStrategy = cryptocurrencyPaymentStrategy;
                         } else {
+                            System.out.println("---------------------------------------");
                             System.out.println("Invalid choice. Please try again.");
+                            System.out.println("---------------------------------------");
                         }
                     }
                     // Prompt the user for the quantity of the product they want to purchase
+                    System.out.println("---------------------------------------");
                     System.out.println("Enter the quantity you want to purchase:");
                     int quantity = Integer.parseInt(scanner.nextLine());
                     if (quantity > selectedProduct.getInventory()) {
-                        System.out.println("Sorry to say that we are out of '" + selectedProduct.getName() + "'");
+                        System.out.println("---------------------------------------");
+                        System.out.println("We only have " +selectedProduct.getInventory()+" '" + selectedProduct.getName() + "'");
+                        System.out.println("---------------------------------------");
                         continue;
                     }
 
@@ -96,7 +105,7 @@ public class Main {
                     double totalPrice = selectedProduct.getPrice() * quantity;
                     DiscountStrategy discountStrategy = paymentStrategy instanceof CreditCardPaymentStrategy ? new TenPercentDiscountStrategy() : new NoDiscountStrategy();
                     double discountedPrice = discountStrategy.applyDiscount(totalPrice);
-                    onlinePurchase.purchaseProduct(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice, quantity);
+                    onlinePurchase.purchaseProduct(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice);
 
                 } else if (choice.equals("2")) {
                     loggedInUsers.clear();

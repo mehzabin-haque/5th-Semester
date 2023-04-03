@@ -21,7 +21,7 @@ public class PaymentReceipt {
             paymentStrategy instanceof PayPalPaymentStrategy ? "PayPal" :
             paymentStrategy instanceof CryptocurrencyPaymentStrategy ? "Cryptocurrency" : "Unknown";
             
-            System.out.println("--------------------------------------------");
+            System.out.println("--------------------------------------------\n");
             System.out.println("************Payment Confirmation************");
             
             System.out.println("Dear " + user.getName() + ",\n\n"

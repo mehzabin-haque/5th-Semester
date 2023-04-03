@@ -25,10 +25,9 @@ public class EcommercePlatform implements EcommerceMediator {
     @Override
     public void processOrder(User user, Product product, PaymentStrategy paymentStrategy,double discountedPrice) {
         if (products.contains(product) && users.contains(user)) {
-            if (product.getInventory() > 0) {
-                product.setInventory(product.getInventory() - 1);
+            if (product.getInventory() >= 0) {
+                // product.setInventory(product.getInventory() - 1);
 
-                // send order confirmation and payment receipt to the user
                 OrderConfirmation orderConfirmation = new OrderConfirmation(user, product, discountedPrice);
                 PaymentReceipt paymentReceipt = new PaymentReceipt(user, product, discountedPrice, paymentStrategy);
                 orderConfirmation.send();
@@ -36,12 +35,12 @@ public class EcommercePlatform implements EcommerceMediator {
                 paymentReceipt.send();
             }
             else {
-                // inform the user that the product is out of stock
+                
                 System.out.println("Sorry, the product is out of stock.");
             }
         }
         else {
-            // inform the user that the product or user is not found
+            
             System.out.println("Sorry, we could not process your order. Please try again later.");
         }
     }

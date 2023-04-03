@@ -26,9 +26,9 @@ public class Main {
         mediator.addUser(user4);
 
 
-        PaymentStrategy creditCardPaymentStrategy = new CreditCardPaymentStrategy("1234 5678 9012 3456", "12/24", "123");
-        PaymentStrategy payPalPaymentStrategy = new PayPalPaymentStrategy("mon@gmail.com", "123");
-        PaymentStrategy cryptocurrencyPaymentStrategy = new CryptocurrencyPaymentStrategy("0x1234567890abcdef");
+        PaymentStrategy creditCardPaymentStrategy = new CreditCardPaymentStrategy();
+        PaymentStrategy payPalPaymentStrategy = new PayPalPaymentStrategy();
+        PaymentStrategy cryptocurrencyPaymentStrategy = new CryptocurrencyPaymentStrategy();
 
         ProductPurchaseTemplate onlinePurchase = new OnlinePurchase();
 
@@ -83,11 +83,21 @@ public class Main {
                             System.out.println("Invalid choice. Please try again.");
                         }
                     }
+                    // Prompt the user for the quantity of the product they want to purchase
+                    System.out.println("Enter the quantity you want to purchase:");
+                    int quantity = Integer.parseInt(scanner.nextLine());
+                    if (quantity > selectedProduct.getInventory()) {
+                        System.out.println("Sorry to say that we are out of '" + selectedProduct.getName() + "'");
+                        continue;
+                    }
+
+                    selectedProduct.setInventory(selectedProduct.getInventory() - quantity);
+
+                    double totalPrice = selectedProduct.getPrice() * quantity;
                     DiscountStrategy discountStrategy = paymentStrategy instanceof CreditCardPaymentStrategy ? new TenPercentDiscountStrategy() : new NoDiscountStrategy();
-                    double discountedPrice = discountStrategy.applyDiscount(selectedProduct.getPrice());
-                    System.out.println("The discounted price is: $" + discountedPrice);
-                    onlinePurchase.purchaseProduct(loggedInUsers.get(0),selectedProduct, paymentStrategy, discountedPrice);
-                    // onlinePurchase.processOrder(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice);
+                    double discountedPrice = discountStrategy.applyDiscount(totalPrice);
+                    onlinePurchase.purchaseProduct(loggedInUsers.get(0), selectedProduct, paymentStrategy, discountedPrice, quantity);
+
                 } else if (choice.equals("2")) {
                     loggedInUsers.clear();
                 } else {
@@ -96,4 +106,6 @@ public class Main {
             }
         }
     }
+
+    
 }

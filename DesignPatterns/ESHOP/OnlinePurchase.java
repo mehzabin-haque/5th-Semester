@@ -24,6 +24,28 @@ public class OnlinePurchase extends ProductPurchaseTemplate {
         mediator.processOrder(user, product, paymentStrategy,discountedPrice);
        
     }
+
+    public void purchaseProduct(User user, Product product, PaymentStrategy paymentStrategy, double price, int quantity) {
+        // Deduct the quantity from the inventory
+        int newInventory = product.getInventory() - quantity;
+        if (newInventory < 0) {
+            System.out.println("Sorry to say that we are out of '" + product.getName() + "'");
+            return;
+        }
+        product.setInventory(newInventory);
+
+        // Create and process the order
+        Order order = new Order(user, product, price, quantity);
+        order.processOrder(paymentStrategy);
+
+        System.out.println("Purchase successful!");
+
+        System.out.println("**************************\n\n");
+        displayProduct(product);
+        displayUserAccount(user);
+        processOrder(user, product, paymentStrategy, price);
+        
+    }
     
 
 }

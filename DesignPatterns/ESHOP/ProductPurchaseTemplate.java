@@ -2,7 +2,7 @@ package ESHOP;
 
 public abstract class ProductPurchaseTemplate {
 
-    public void purchaseProduct(User user, Product product, PaymentStrategy paymentStrategy,double discountedPrice) {
+    public void purchaseProduct(User user, Product product, PaymentStrategy paymentStrategy,double discountedPrice,int quantity) {
         displayProduct(product);
         displayUserAccount(user);
         processOrder(user, product, paymentStrategy,discountedPrice);
